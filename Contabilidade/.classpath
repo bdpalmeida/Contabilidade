@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/org-apache-commons-logging.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/org.apache.commons.collections.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/org.apache.commons.beanutils.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/jasperreports-5.2.0.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/jdt-compiler.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/itext-4.2.0.jar"/>
+	<classpathentry kind="lib" path="src/br/com/Complemento/jaxen-1.1.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
