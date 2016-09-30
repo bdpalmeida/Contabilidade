@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-09-28T00:08:06 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioPagamento" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20786b22-05ef-4192-821c-3eee62534c5e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Conector "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT * FROM vwPagamentos]]>
+	</queryString>
+	<field name="cod" class="java.lang.Integer"/>
+	<field name="data_pag" class="java.sql.Timestamp"/>
+	<field name="lancamento" class="java.lang.String"/>
+	<field name="valor" class="java.lang.Double"/>
+	<field name="descricao" class="java.lang.String"/>
+	<variable name="valor1" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="800" height="79" uuid="c391521b-e4c1-415f-8c0f-e034aaa7c496"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="30"/>
+				</textElement>
+				<text><![CDATA[Pagamento]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="799" height="30" backcolor="#BFBFBF" uuid="968b3b09-f13d-4f0d-9269-4bb09127e090"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="1" y="1" width="129" height="29" uuid="05b3edc8-8c31-4e34-a532-8e3a3464e68e"/>
+				<box padding="0">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="20"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="0" width="204" height="29" uuid="34985aad-1ad7-40fc-b398-f496650b3729"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="20"/>
+				</textElement>
+				<text><![CDATA[Lançamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="0" width="89" height="29" uuid="09f144e2-cdb0-4795-9048-9ef9734f433a"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="20"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="0" width="377" height="29" uuid="f167ba69-c2bf-4024-a09e-42fc734f96e8"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="20"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="130" height="30" uuid="a134c26a-68fd-4ae8-99fe-31d11dedc187"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_pag}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="204" height="30" uuid="83859d62-5dc1-43ec-a8f4-ee1e35f50434"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="0" width="89" height="30" uuid="b0590a72-bf4a-4040-8eb5-47cb22012661"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[NumberFormat.getInstance().format($F{valor})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="377" height="30" uuid="4f47a90d-7f48-4154-99de-fe3e30e4fa1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="30">
+			<staticText>
+				<reportElement x="602" y="0" width="100" height="30" uuid="0f7551f6-06ef-4eef-9797-405e9789612a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="20"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saldo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="700" y="0" width="100" height="30" uuid="aaea8cf4-dee2-4835-b674-3b2fc97ed9ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Sans" size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($V{valor1})]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>
