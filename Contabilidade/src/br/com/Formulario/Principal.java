@@ -250,7 +250,8 @@ public class Principal {
 						+ "UM DETERMINADO FIM E NÃO VIOLAÇÃO. EM NENHUM CASO OS AUTORES ou direitos de autor \n"
 						+ "DETENTORES DE SER RESPONSÁVEL POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, \n"
 						+ "SEJA EM UMA AÇÃO DE CONTRATO, DELITO OU DE OUTRA FORMA, DECORRENTES DE,OU EM CONEXÃO \n"
-						+ "COM O SOFTWARE OU O USO OU OUTRA APLICAÇÃO DO PROGRAMAS.",
+						+ "COM O SOFTWARE OU O USO OU OUTRA APLICAÇÃO DO PROGRAMAS.\n\n"
+						+ "Projeto do software disponível no GitHub: https://github.com/bdpalmeida/Contabilidade.git",
 						"Sobre Contabilidade", JOptionPane.PLAIN_MESSAGE, null);
 			}
 		});
