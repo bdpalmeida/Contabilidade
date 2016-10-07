@@ -307,11 +307,17 @@ public class Imprimir extends JDialog {
 			ano = String.valueOf(cbxAno.getSelectedItem());
 			
 			if(tabela == "vwDespesas")
-				sql = "SELECT * FROM " + tabela + " WHERE EXTRACT(MONTH FROM data_desp) = " + mes + 
-						" && EXTRACT(YEAR FROM data_desp) = " + ano;
+				sql = "SELECT *, (SELECT ROUND(SUM(total)) FROM Despesa WHERE "
+						+ "EXTRACT(MONTH FROM data_desp) = " + mes 
+						+ "&& EXTRACT(YEAR FROM data_desp) = " + ano + ") AS totalDespesas "
+						+ "FROM vwDespesas WHERE EXTRACT(MONTH FROM data_desp) = " + mes 
+						+ " && EXTRACT(YEAR FROM data_desp) = " + ano;
 			else
-				sql = "SELECT * FROM " + tabela + " WHERE EXTRACT(MONTH FROM data_pag) = " + mes + 
-						" && EXTRACT(YEAR FROM data_pag) = " + ano;			
+				sql = "SELECT *, (SELECT ROUND(SUM(valor)) FROM Pagamento WHERE "
+						+ "EXTRACT(MONTH FROM data_pag) = " + mes 
+						+ "&& EXTRACT(YEAR FROM data_pag) = " + ano + ") AS totalPagamentos "
+						+ "FROM vwPagamentos WHERE EXTRACT(MONTH FROM data_pag) = " + mes 
+						+ " && EXTRACT(YEAR FROM data_pag) = " + ano;
 		}
 		
 		JasperPrint impressao = JasperFillManager.fillReport(relatorio, null, con_MySQL.DadosRelatorio(sql));
