@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
-<!-- 2016-09-28T00:08:06 -->
+<!-- 2016-10-07T14:05:02 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioPagamento" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20786b22-05ef-4192-821c-3eee62534c5e">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Conector "/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<queryString>
-		<![CDATA[SELECT * FROM vwPagamentos]]>
+		<![CDATA[SELECT 
+    *,
+    (SELECT 
+            ROUND(SUM(valor))
+        FROM
+            Pagamento
+        WHERE
+            EXTRACT(MONTH FROM data_pag) = '09'
+                && EXTRACT(YEAR FROM data_pag) = '2016') AS totalPagamentos
+FROM
+    vwPagamentos
+WHERE
+    EXTRACT(MONTH FROM data_pag) = '09'
+        && EXTRACT(YEAR FROM data_pag) = '2016';]]>
 	</queryString>
 	<field name="cod" class="java.lang.Integer"/>
 	<field name="data_pag" class="java.sql.Timestamp"/>
 	<field name="lancamento" class="java.lang.String"/>
 	<field name="valor" class="java.lang.Double"/>
 	<field name="descricao" class="java.lang.String"/>
+	<field name="totalPagamentos" class="java.lang.Double"/>
 	<variable name="valor1" class="java.lang.Double" resetType="Page" calculation="Sum">
 		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
 	</variable>
@@ -135,7 +149,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lucida Sans" size="15"/>
 				</textElement>
-				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($V{valor1})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($F{totalPagamentos})]]></textFieldExpression>
 			</textField>
 		</band>
 	</lastPageFooter>
