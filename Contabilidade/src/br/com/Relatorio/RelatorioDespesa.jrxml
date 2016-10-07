@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
-<!-- 2016-09-30T13:18:37 -->
+<!-- 2016-10-07T14:04:37 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioDespesa" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac927d87-0cd0-4873-a70d-4d711a0a8b26">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Conector "/>
 	<queryString>
-		<![CDATA[SELECT * FROM vwDespesas]]>
+		<![CDATA[SELECT 
+    *,
+    (SELECT 
+            ROUND(SUM(total))
+        FROM
+            Despesa
+        WHERE
+            EXTRACT(MONTH FROM data_desp) = '09'
+                && EXTRACT(YEAR FROM data_desp) = '2016') AS totalDespesas
+FROM
+    vwDespesas
+WHERE
+    EXTRACT(MONTH FROM data_desp) = '09'
+        && EXTRACT(YEAR FROM data_desp) = '2016';]]>
 	</queryString>
+	<field name="cod" class="java.lang.Integer"/>
 	<field name="data_desp" class="java.sql.Timestamp"/>
 	<field name="nome_Tipo" class="java.lang.String"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="entrada" class="java.lang.Double"/>
 	<field name="saida" class="java.lang.Double"/>
 	<field name="total" class="java.lang.Double"/>
+	<field name="totalDespesas" class="java.lang.Double"/>
 	<variable name="total1" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{total}]]></variableExpression>
 	</variable>
@@ -179,7 +194,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lucida Sans" size="15"/>
 				</textElement>
-				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($V{total3})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($F{totalDespesas})]]></textFieldExpression>
 			</textField>
 		</band>
 	</lastPageFooter>
