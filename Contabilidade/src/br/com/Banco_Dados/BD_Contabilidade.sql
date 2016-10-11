@@ -41,7 +41,7 @@ CREATE OR REPLACE VIEW vwDespesas AS
     
 CREATE OR REPLACE VIEW vwTotalDespesas AS
     SELECT 
-        ROUND(SUM(total), 2)
+        SUM(total)
     FROM
         Despesa;
 
@@ -63,6 +63,6 @@ CREATE OR REPLACE VIEW vwPagamentos AS
 
 CREATE OR REPLACE VIEW vwTotalPagamentos AS
     SELECT 
-        ROUND(SUM(valor), 2)
+        SUM(valor)
     FROM
         Pagamento;
