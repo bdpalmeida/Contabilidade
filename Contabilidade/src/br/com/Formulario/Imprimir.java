@@ -307,13 +307,13 @@ public class Imprimir extends JDialog {
 			ano = String.valueOf(cbxAno.getSelectedItem());
 			
 			if(tabela == "vwDespesas")
-				sql = "SELECT *, (SELECT ROUND(SUM(total)) FROM Despesa WHERE "
+				sql = "SELECT *, (SELECT SUM(total) FROM Despesa WHERE "
 						+ "EXTRACT(MONTH FROM data_desp) = " + mes 
 						+ "&& EXTRACT(YEAR FROM data_desp) = " + ano + ") AS totalDespesas "
 						+ "FROM vwDespesas WHERE EXTRACT(MONTH FROM data_desp) = " + mes 
 						+ " && EXTRACT(YEAR FROM data_desp) = " + ano;
 			else
-				sql = "SELECT *, (SELECT ROUND(SUM(valor)) FROM Pagamento WHERE "
+				sql = "SELECT *, (SELECT SUM(valor) FROM Pagamento WHERE "
 						+ "EXTRACT(MONTH FROM data_pag) = " + mes 
 						+ "&& EXTRACT(YEAR FROM data_pag) = " + ano + ") AS totalPagamentos "
 						+ "FROM vwPagamentos WHERE EXTRACT(MONTH FROM data_pag) = " + mes 
